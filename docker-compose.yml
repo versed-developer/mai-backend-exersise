@@ -1,0 +1,36 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres:latest
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=appdata
+      - POSTGRES_USER=dbadmin
+      - POSTGRES_PASSWORD=password
+
+  api:
+    build: api
+    entrypoint: ["./entrypoint.sh"]
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./api:/code
+    environment:
+      - POSTGRES_DB=appdata
+      - POSTGRES_USER=dbadmin
+      - POSTGRES_PASSWORD=password
+      - LOG_LOCATION=/var/log/api.log
+    depends_on:
+      - db
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+        compress: "true"
+
+volumes:
+  db-data:
