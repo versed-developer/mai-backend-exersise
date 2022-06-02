@@ -2,7 +2,13 @@
 
 ## What to code
 
-The exercise is to create and update a few additional models and API endpoints.  Please complete all of the numbered tasks below.
+The exercise is to create and update a few additional models and API endpoints.  This project is very similar to our backend tech stack.  We use
+
+- [Django 4](https://docs.djangoproject.com/en/4.0/)
+- [django REST framework](https://www.django-rest-framework.org/)
+
+
+Please complete all of the numbered tasks below.
 
 ### Models
 
@@ -70,6 +76,8 @@ This repository uses Docker and docker-compose to spin up two containers.  One i
 2. Once the container is up and running, you will need to create a root user.  Run the following command and follow the prompts: `docker exec -it <container_name> poetry run python manage.py createsuperuser`
 
 3. You can view the Django admin at `http://localhost:8000/admin` using your new superuser credentials.
+
+4. We recommend using [Postman](https://www.postman.com/) to test your endpoints.
 
 
 ## Evaluation
