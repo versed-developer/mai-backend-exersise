@@ -1,0 +1,88 @@
+# Backend Interview Exercise 
+
+## What to code
+
+The exercise is to create and update a few additional models and API endpoints.  Please complete all of the numbered tasks below.
+
+### Models
+
+1. Create a `Course` model that represents a specific course/semester.
+
+    - Properties:
+        - name
+        - location - example: "Room 123"
+
+2. Create one or more models to represent school administrators, teachers and students.
+
+    - Properties:
+        - name
+
+3. Create the following relationships between the previous models
+
+    - A course can have 0-1 teachers
+    - A course can have 0-many students
+    - Each of the new models must be related to 1 `School` (model provided)
+    
+
+### REST API
+
+1. Create separate CRUD endpoints for the following
+
+    - courses
+    - admins
+    - teachers
+    - students
+
+2. Add `GET /api/schools/:schoolId:/stats` which returns a JSON response with the following:
+
+    ```
+    {
+        id: <schoolId>,
+        courses: <# of courses>,
+        admins: <# of admins>,
+        teachers: <# of teachers>,
+        students: <# of students>
+    }
+    ```
+
+3. Create an endpoint `POST /api/transfer` that moves a student from one class to another.
+
+    ```
+    # Request body
+    {
+        studentId: <studentId>,
+        fromCourseId: <current course ID>,
+        toCourseId: <target course ID>
+    }
+    ```
+
+
+## Doing the exercise
+
+This repository uses Docker and docker-compose to spin up two containers.  One is a PostgreSQL database, and the other is a Python Django 4 application.
+
+### Setup
+
+1. To create the environment, run `docker-compose up -d` in the root directory of this repo.
+
+    > M1 Mac users can run `docker-compose -f docker-compose.m1.yml up -d` instead.
+
+2. Once the container is up and running, you will need to create a root user.  Run the following command and follow the prompts: `docker exec -it <container_name> poetry run python manage.py createsuperuser`
+
+3. You can view the Django admin at `http://localhost:8000/admin` using your new superuser credentials.
+
+
+## Evaluation
+
+We will use the following process to verify your work
+
+1. Boot up the docker containers
+2. Run/verify Django database migrations
+3. Create some data using the Django admin tool
+4. Evaluate the endpoints with a few test scenarios
+
+Your implementation will also be evaluated against the following criteria:
+
+- it has to work
+- cleanliness and readability of code
+- creativity - It's great to show off interesting implementations, but stick to the objectives.  This exercise should not take too long, so don't feel the need to add extra features.

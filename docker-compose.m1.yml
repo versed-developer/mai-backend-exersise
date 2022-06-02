@@ -3,6 +3,7 @@ version: '3.1'
 services:
   db:
     image: postgres:latest
+    platform: linux/arm64
     volumes:
       - db-data:/var/lib/postgresql/data
     ports:
@@ -15,7 +16,7 @@ services:
   api:
     build:
       context: api
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.m1
     entrypoint: ["./entrypoint.sh"]
     ports:
       - "8000:8000"
