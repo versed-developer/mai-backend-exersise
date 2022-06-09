@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "dtp-boilerplate"
+name = "backend-exercise"
 version = "0.1.0"
 description = ""
 authors = ["Mike Liu <mike@bearwavetech.com>"]
