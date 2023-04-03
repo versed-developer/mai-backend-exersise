@@ -87,6 +87,7 @@ One is a PostgreSQL database, and the other is a Python Django 4 application.
 3. You can view the Django admin at `http://localhost:8000/admin` using your new superuser credentials.
 
 4. You can use [Postman](https://www.postman.com/) to test your endpoints.
+   Or you can just use browser as Django REST Framework supports Browsable API interface for each endpoint.
 
 ### Test Driven Development
 
@@ -95,6 +96,12 @@ For speeding up the development we strongly recommend using [automated tests](ht
 to help developing APIs.
 Making things testable will make them more modular.
 Also, it makes the evaluation easier 😉.
+
+You can run test by typing the following command.
+
+   ```bash
+    docker exec -it <container_name> poetry run python manage.py test
+   ```
 
 
 ## 💯 Evaluation
